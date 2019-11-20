@@ -76,7 +76,7 @@ export class ServerService {
     this.setRoutes(server, environment);
     this.setCors(server, environment);
     this.enableProxy(server, environment);
-    this.logErrorResponses(server, environment);
+    this.logErrorResponses(server);
 
     // handle server errors
     serverInstance.on('error', (error: any) => {
@@ -376,10 +376,8 @@ export class ServerService {
    * Log all error responses made by the environment
    *
    * @param server - server on which to log the response
-   * @param environment - environment to link log to
    */
-  private logErrorResponses(server: any, environment: Environment) {
-    const self = this;
+  private logErrorResponses(server: any) {
     server.use((err, req, res, next) => {
       // the response is logged by the overrided function
       return res.status(500).send(err);
@@ -406,6 +404,7 @@ export class ServerService {
    */
   public isValidURL(address: string): boolean {
     try {
+      // @ts-ignore
       const myURL = new URL(address);
 
       return true;
