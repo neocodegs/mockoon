@@ -83,13 +83,12 @@ describe('Environments import', () => {
 
         tests.helpers.sendWebContentsAction('IMPORT_FILE');
 
-        await tests.helpers.countEnvironments(0);
-        await tests.helpers.countRoutes(0);
-
         await tests.helpers.checkToastDisplayed(
           'warning',
           'Some routes were not imported'
         );
+        await tests.helpers.countEnvironments(0);
+        await tests.helpers.countRoutes(0);
 
         // wait for post migration autosave
         await tests.app.client.pause(4000);
