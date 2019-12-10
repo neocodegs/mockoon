@@ -83,6 +83,7 @@ describe('Environments import', () => {
 
         tests.helpers.sendWebContentsAction('IMPORT_FILE');
 
+        await tests.app.client.pause(500);
         await tests.helpers.checkToastDisplayed(
           'warning',
           'Some routes were not imported'
