@@ -2,9 +2,8 @@ name: Binaries build
 
 on:
   push:
-    tags:
-      - v*
-
+    branches:
+      - '*'
 jobs:
   build-macos:
     name: Build macOS binary (dmg)
