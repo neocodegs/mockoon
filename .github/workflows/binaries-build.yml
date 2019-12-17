@@ -9,12 +9,12 @@ jobs:
     name: Build macOS binary (dmg)
     runs-on: macOS-latest
 
-    env:
-      APPLEID: ${{secrets.APPLEID}}
-      APPLEIDPASS: ${{secrets.APPLEIDPASS}}
-      ASCPROVIDER: ${{secrets.ASCPROVIDER}}
-      CSC_LINK: ${{secrets.MACOS_CSC_LINK}}
-      CSC_KEY_PASSWORD: ${{secrets.MACOS_CSC_KEY_PASSWORD}}
+#    env:
+#      APPLEID: ${{secrets.APPLEID}}
+#      APPLEIDPASS: ${{secrets.APPLEIDPASS}}
+#      ASCPROVIDER: ${{secrets.ASCPROVIDER}}
+#      CSC_LINK: ${{secrets.MACOS_CSC_LINK}}
+#      CSC_KEY_PASSWORD: ${{secrets.MACOS_CSC_KEY_PASSWORD}}
 
     steps:
     - uses: actions/checkout@v1
@@ -31,9 +31,9 @@ jobs:
         npm ci
         npm run build:prod
         npm run package:mac
-    - name: Verify notarization
-      run: |
-        codesign --verify --deep --strict --verbose=2 ./packages/mac/mockoon.app
+#    - name: Verify notarization
+#      run: |
+#        codesign --verify --deep --strict --verbose=2 ./packages/mac/mockoon.app
     - name: Get binary shasum
       run: |
         shasum -a 256 ./packages/mockoon.setup.${PACKAGE_VERSION}.dmg
@@ -86,9 +86,9 @@ jobs:
   build-windows:
     name: Build Windows binary (exe)
     runs-on: windows-latest
-    env:
-      CSC_LINK: ${{secrets.WIN_CSC_LINK}}
-      CSC_KEY_PASSWORD: ${{secrets.WIN_CSC_KEY_PASSWORD}}
+#    env:
+#      CSC_LINK: ${{secrets.WIN_CSC_LINK}}
+#      CSC_KEY_PASSWORD: ${{secrets.WIN_CSC_KEY_PASSWORD}}
 
     steps:
     - uses: actions/checkout@v1
