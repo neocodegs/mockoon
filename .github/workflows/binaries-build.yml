@@ -9,12 +9,13 @@ jobs:
     name: Build macOS binary (dmg)
     runs-on: macOS-latest
 
-#    env:
-#      APPLEID: ${{secrets.APPLEID}}
-#      APPLEIDPASS: ${{secrets.APPLEIDPASS}}
-#      ASCPROVIDER: ${{secrets.ASCPROVIDER}}
-#      CSC_LINK: ${{secrets.MACOS_CSC_LINK}}
-#      CSC_KEY_PASSWORD: ${{secrets.MACOS_CSC_KEY_PASSWORD}}
+    env:
+      CSC_IDENTITY_AUTO_DISCOVERY: false
+#     APPLEID: ${{secrets.APPLEID}}
+#     APPLEIDPASS: ${{secrets.APPLEIDPASS}}
+#     ASCPROVIDER: ${{secrets.ASCPROVIDER}}
+#     CSC_LINK: ${{secrets.MACOS_CSC_LINK}}
+#     CSC_KEY_PASSWORD: ${{secrets.MACOS_CSC_KEY_PASSWORD}}
 
     steps:
     - uses: actions/checkout@v1
